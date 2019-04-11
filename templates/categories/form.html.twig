@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cadastro de categoria{% endblock %}
+
+{% block body %}
+<h1>Cadastro de categoria</h1>
+<form action="/categories/save" method="POST">
+  <div class="form-group">
+    <input type="hidden" name="id" value="{{ category.id }}">
+    <label for="exampleInputEmail1"><strong>Nome *</strong></label>
+    <input type="text" class="form-control" placeholder="Nome" name="name" value="{{ category.name }}">
+  </div>
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+{% endblock %}

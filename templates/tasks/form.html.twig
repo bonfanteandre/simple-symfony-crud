@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cadastro de tarefa{% endblock %}
+
+{% block body %}
+<h1>Cadastro de tarefa</h1>
+<form action="/tasks/save" method="POST">
+  <div class="form-group">
+    <input type="hidden" name="id" value="{{ task.id }}">
+    <label for="exampleInputEmail1"><strong>Título *</strong></label>
+    <input type="text" class="form-control" placeholder="Título" name="title" value="{{ task.title }}">
+    <label><strong>Categoria * </strong></label>
+    <select class="form-control" name="category_id">
+      <option>Selecione uma categoria</option>  
+      {% for category in categories %}
+          <option value="{{ category.id }}" {% if task.category.id == category.id %}selected{% endif %}>{{ category.name }}</option>
+      {% endfor %}
+    </select>
+    <label><strong>Descrição *</strong></label>
+    <textarea class="form-control" name="description" placeholder="Descrição">{{ task.description }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+{% endblock %}

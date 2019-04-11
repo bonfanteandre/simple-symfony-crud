@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorias{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Categorias</h1>
+        <a href="/categories/new" class="btn btn-success">Nova categoria</a>
+    </div>
+</div>
+<br>
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 10%">#</th>
+                        <th scope="col">Nome</th>
+                        <th style="width: 15%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                        <tr>
+                            <th scope="row">{{ category.id }}</th>
+                            <td>{{ category.name }}</td>
+                            <td>
+                                <a href="/categories/edit/{{ category.id }}" class="btn btn-sm btn-info">Editar</a>
+                                <a href="/categories/delete/{{ category.id }}" class="btn btn-sm btn-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
